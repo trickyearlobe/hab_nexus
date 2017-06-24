@@ -1,0 +1,16 @@
+#!/bin/sh
+
+exec 2>&1
+
+export JAVA_HOME={{pkgPathFor "core/jre8/8u111"}}
+export NEXUS_HOME={{pkg.path}}/nexus-{{pkg.version}}
+
+export WRAPPER_CMD=$NEXUS_HOME/bin/jsw/linux-x86-64/wrapper
+export WRAPPER_CONF=$NEXUS_HOME/bin/jsw/conf/wrapper.conf
+
+echo JAVA_HOME: $JAVA_HOME
+echo NEXUS_HOME: $NEXUS_HOME
+echo COMMAND: $WRAPPER_CMD $WRAPPER_CONF wrapper.syslog.ident=nexus
+
+# cd $NEXUS_HOME
+exec $WRAPPER_CMD $WRAPPER_CONF wrapper.syslog.ident=nexus

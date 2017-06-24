@@ -1,0 +1,5 @@
+#!/bin/sh
+exec 2>&1
+
+# echo 'Resetting permissions on {{pkg.path}}/*'
+# chown -R hab:hab {{pkg.path}}/*
