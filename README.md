@@ -1,8 +1,6 @@
-# Nexus 2.x OSS Habitat Plan
+# Nexus 3.x OSS Habitat Plan
 
-This repo contains a [Habitat](https://habitat.sh) plan.sh that can build and package Nexus OSS 2.x.
-
-Its a bit of an MVP right now so don't expect much.
+This repo contains a [Habitat](https://habitat.sh) plan.sh that can build and package Nexus OSS 3.x.x
 
 ## Building the package
 
@@ -30,7 +28,7 @@ On Linux with Habitat installed
 hab svc start trickyearlobe/nexus
 ```
 
-On Windows/OSX with docker
+With docker
 
 ```
 docker run -it -p 8081:8081 trickyearlobe/nexus
