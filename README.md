@@ -25,7 +25,7 @@ hab pkg export docker trickyearlobe/nexus
 On Linux with Habitat installed
 
 ```
-hab svc start trickyearlobe/nexus
+hab svc load trickyearlobe/nexus
 ```
 
 With docker
