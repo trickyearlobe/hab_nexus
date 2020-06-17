@@ -7,15 +7,15 @@ pkg_upstream_url="https://www.sonatype.com"
 pkg_license=("Apache-2.0")
 
 pkg_major="3"
-pkg_minor="15"
-pkg_patch="2"
-pkg_rev="01"
+pkg_minor="24"
+pkg_patch="0"
+pkg_rev="02"
 pkg_version="${pkg_major}.${pkg_minor}.${pkg_patch}"
 pkg_fq_version="${pkg_version}-${pkg_rev}"
 
 pkg_filename="nexus-${pkg_version}-unix.tar.gz"
-pkg_source="https://sonatype-download.global.ssl.fastly.net/repository/repositoryManager/${pkg_major}/nexus-${pkg_fq_version}-unix.tar.gz"
-pkg_shasum="acde357f5bbc6100eb0d5a4c60a1673d5f1f785e71a36cfa308b8dfa45cf25d0"
+pkg_source="https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/${pkg_major}/nexus-${pkg_fq_version}-unix.tar.gz"
+pkg_shasum="a2bfbc602228adeeb1a932e6e79bebea0ca2a9c1e7c86dfeeb3898aebf31f70c"
 
 # Dependencies
 pkg_deps=(core/jre8)
