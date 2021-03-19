@@ -1,21 +1,21 @@
 pkg_origin=trickyearlobe
 pkg_name="nexus"
 pkg_maintainer="Richard Nixon <richard.nixon@btinternet.com>"
-pkg_description="Sonatype Nexus Reposiroty Manager"
+pkg_description="Sonatype Nexus Repository Manager"
 pkg_upstream_url="https://www.sonatype.com"
 
 pkg_license=("Apache-2.0")
 
 pkg_major="3"
-pkg_minor="29"
-pkg_patch="2"
-pkg_rev="02"
+pkg_minor="30"
+pkg_patch="0"
+pkg_rev="01"
 pkg_version="${pkg_major}.${pkg_minor}.${pkg_patch}"
 pkg_fq_version="${pkg_version}-${pkg_rev}"
 
 pkg_filename="nexus-${pkg_version}-unix.tar.gz"
 pkg_source="https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/${pkg_major}/nexus-${pkg_fq_version}-unix.tar.gz"
-pkg_shasum="bc7cbb577db195868f25d73ca22de3f7cc1e39d7384794bae03c28f5823ca3a7"
+pkg_shasum="6b186ec3514dbadf89a92d560b1c9098fd3caa1d2d5e7f5402fcf61a3d6418fb"
 
 # Dependencies
 pkg_deps=(core/jre8)
