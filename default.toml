@@ -3,4 +3,6 @@
 # You can safely delete this file if you don't need it.
 
 port=8081
+host='0.0.0.0'
+hazelcast='true'
 workdir='/hab/svc/nexus/data/sonatype-work'

@@ -12,19 +12,19 @@ export JAVA_HOME={{pkgPathFor "core/jre8"}}
 # Check if we need to initialise the work directory
 if [ ! -d "{{cfg.workdir}}" ] ; then
   echo "Initializing Sonatype Work Directory"
-  mkdir -p {{cfg.workdir}}
-  cp -R {{pkg.path}}/sonatype-work/* {{cfg.workdir}}
   mkdir -p {{cfg.workdir}}/prefs
-fi
-if [ ! -d "{{cfg.workdir}}/prefs" ] ; then
-  mkdir -p {{cfg.workdir}}/prefs
+  cp -RT {{pkg.path}}/sonatype-work {{cfg.workdir}}
 fi
 
+if [ ! -d "{{cfg.workdir}}/nexus3/etc" ] ; then
+  mkdir -p {{cfg.workdir}}/nexus3/etc
+fi
 
 if [ -f "/hab/svc/nexus/data/sonatype-work/nexus3/etc/nexus.properties" ] ; then
-  echo "Removing old Nexus customisations"
+  echo "Replacing old Nexus customisations"
   unlink /hab/svc/nexus/data/sonatype-work/nexus3/etc/nexus.properties
 fi
+
 echo "Connecting dynamic Nexus customisations"
 ln -s /hab/svc/nexus/config/nexus.properties /hab/svc/nexus/data/sonatype-work/nexus3/etc/nexus.properties
 

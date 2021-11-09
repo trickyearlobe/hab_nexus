@@ -1,3 +1,12 @@
 JAVA_HOME     = {{pkgPathFor "core/jre8"}}
 NEXUS_HOME    = {{pkg.path}}
 SONATYPE_WORK = {{cfg.workdir}}
+
+NEXUS_ORIGIN = {{pkg.origin}}
+NEXUS_NAME = {{pkg.name}}
+NEXUS_VERSION = {{pkg.version}}
+NEXUS_RELEASE = {{pkg.release}}
+NEXUS_SERVICE_PATH = {{pkg.svc_path}}
+NEXUS_CONFIG_PATH = {{pkg.config_path}}
+
+NEXUS_ME = {{svc.me}}

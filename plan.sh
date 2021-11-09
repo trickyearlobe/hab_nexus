@@ -7,7 +7,7 @@ pkg_upstream_url="https://www.sonatype.com"
 pkg_license=("Apache-2.0")
 
 pkg_major="3"
-pkg_minor="30"
+pkg_minor="36"
 pkg_patch="0"
 pkg_rev="01"
 pkg_version="${pkg_major}.${pkg_minor}.${pkg_patch}"
@@ -15,14 +15,14 @@ pkg_fq_version="${pkg_version}-${pkg_rev}"
 
 pkg_filename="nexus-${pkg_version}-unix.tar.gz"
 pkg_source="https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/${pkg_major}/nexus-${pkg_fq_version}-unix.tar.gz"
-pkg_shasum="6b186ec3514dbadf89a92d560b1c9098fd3caa1d2d5e7f5402fcf61a3d6418fb"
+pkg_shasum="3a1e0e75beabc1445beb03f744e922a47a90d167afc3979323f58ad2191c8e43"
 
 # Dependencies
 pkg_deps=(core/jre8)
 
 # Paths to the application
-pkg_bin_dirs=(nexus-$pkg_fq_version/bin)
-pkg_lib_dirs=(nexus-$pkg_fq_version/lib)
+pkg_bin_dirs=(bin)
+pkg_lib_dirs=(lib)
 
 pkg_exports=(
   [port]=port
@@ -39,15 +39,24 @@ do_build() {
 
 do_install() {
   # Copy across the Nexus binaries
-  cp -R $HAB_CACHE_SRC_PATH/nexus-$pkg_fq_version $pkg_prefix
+  echo Copying Nexus binaries from $HAB_CACHE_SRC_PATH/nexus-$pkg_fq_version to $pkg_prefix
+  cp -RT $HAB_CACHE_SRC_PATH/nexus-$pkg_fq_version $pkg_prefix
 
-  # Then copy across the template sonatype-work directory. We'll use this to construct the default repo
-  # under /hab/svc which will persist across upgrades.
+  # Save nexus.vmoptions in case we want to review it later
+  # We will replace it with a symlink to the dynamic config.
+  # We do it here because the run hook doesn't have sufficient rights.
+  echo Saving $pkg_prefix/bin/nexus.vmoptions
+  mv $pkg_prefix/bin/nexus.vmoptions $pkg_prefix/bin/nexus.vmoptions.example
+  echo Symlinking $pkg_svc_config_path/nexus.vmoptions to $pkg_prefix/bin/nexus.vmoptions
+  ln -s $pkg_svc_config_path/nexus.vmoptions $pkg_prefix/bin/nexus.vmoptions
+
+
+  # Copy across the template sonatype-work directory.
+  # We'll use this to construct the default repo under
+  # /hab/svc which will persist across upgrades.
+  echo Copying $HAB_CACHE_SRC_PATH/sonatype-work to $pkg_prefix
   cp -R $HAB_CACHE_SRC_PATH/sonatype-work $pkg_prefix
 
-  # Remove default config file and symlink it to dynamic config
-  rm $pkg_prefix/nexus-$pkg_fq_version/bin/nexus.vmoptions
-  ln -s /hab/svc/nexus/config/nexus.vmoptions $pkg_prefix/nexus-$pkg_fq_version/bin/nexus.vmoptions
   return 0
 }
 
