@@ -10,14 +10,14 @@ exec 2>&1
 export JAVA_HOME={{pkgPathFor "core/corretto8"}}
 
 # Check if we need to initialise the work directory
-if [ ! -d "{{cfg.workdir}}" ] ; then
+if [ ! -d "/hab/svc/nexus/data/sonatype-work" ] ; then
   echo "Initializing Sonatype Work Directory"
-  mkdir -p {{cfg.workdir}}/prefs
-  cp -RT {{pkg.path}}/sonatype-work {{cfg.workdir}}
+  mkdir -p /hab/svc/nexus/data/sonatype-work/prefs
+  cp -RT {{pkg.path}}/sonatype-work /hab/svc/nexus/data/sonatype-work
 fi
 
-if [ ! -d "{{cfg.workdir}}/nexus3/etc" ] ; then
-  mkdir -p {{cfg.workdir}}/nexus3/etc
+if [ ! -d "/hab/svc/nexus/data/sonatype-work/nexus3/etc" ] ; then
+  mkdir -p /hab/svc/nexus/data/sonatype-work/nexus3/etc
 fi
 
 if [ -f "/hab/svc/nexus/data/sonatype-work/nexus3/etc/nexus.properties" ] ; then

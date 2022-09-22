@@ -1,6 +1,5 @@
 JAVA_HOME     = {{pkgPathFor "core/corretto8"}}
 NEXUS_HOME    = {{pkg.path}}
-SONATYPE_WORK = {{cfg.workdir}}
 
 NEXUS_ORIGIN = {{pkg.origin}}
 NEXUS_NAME = {{pkg.name}}
