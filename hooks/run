@@ -7,7 +7,7 @@
 exec 2>&1
 
 # Make sure our app can find the JRE
-export JAVA_HOME={{pkgPathFor "core/jre8"}}
+export JAVA_HOME={{pkgPathFor "core/corretto8"}}
 
 # Check if we need to initialise the work directory
 if [ ! -d "{{cfg.workdir}}" ] ; then
