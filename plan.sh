@@ -51,5 +51,9 @@ do_install() {
   # Update nexus.vmoptions to use the service's data directory.
   sed -i 's/..\/sonatype-work/\/hab\/svc\/nexus\/data\/sonatype-work/g' $pkg_prefix/bin/nexus.vmoptions
 
+  # When we export to docker, hab's home dir is / which is not writable. Java defaults to store
+  # preferences in the home directory, so we need to make sure it puts them somewhere else
+  grep -q -e '-Djava.util.prefs.userRoot' $pkg_prefix/bin/nexus.vmoptions || echo "-Djava.util.prefs.userRoot=/hab/svc/nexus/data" >> $pkg_prefix/bin/nexus.vmoptions
+
   return 0
 }
