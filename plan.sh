@@ -7,15 +7,15 @@ pkg_upstream_url="https://www.sonatype.com"
 pkg_license=("Apache-2.0")
 
 pkg_major="3"
-pkg_minor="57"
+pkg_minor="60"
 pkg_patch="0"
-pkg_rev="01"
+pkg_rev="02"
 pkg_version="${pkg_major}.${pkg_minor}.${pkg_patch}"
 pkg_fq_version="${pkg_version}-${pkg_rev}"
 
 pkg_filename="nexus-${pkg_version}-unix.tar.gz"
 pkg_source="https://sonatype-download.global.ssl.fastly.net/repository/downloads-prod-group/${pkg_major}/nexus-${pkg_fq_version}-unix.tar.gz"
-pkg_shasum="d0f29f314399b0143c101ebaffb349596c087e96516b8f321ab045e37caf844d"
+pkg_shasum="607f6a6286ae346671f9eb4bf47bb26f4238c7c6d4aeec6b7122c28f558040e3"
 
 # Switch to Corretto8 for JRE due to Oracle license changes
 pkg_deps=(core/corretto8)
